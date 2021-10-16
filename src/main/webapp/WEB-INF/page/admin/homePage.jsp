@@ -64,7 +64,10 @@
     </div>
     <div id="div_home_context">
         <div id="div_home_context_main">
-            <%@include file="homeManagePage.jsp" %>
+            <%--<%@include file="homeManagePage.jsp" %>--%>
+            <%--<%@include file="homeManagePage.jsp" %>
+            <%@include file="homeManagePage.jsp" %>--%>
+            <%@include file="productManagePage.jsp" %>
         </div>
     </div>
 </div>
