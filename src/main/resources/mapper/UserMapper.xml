@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s3.mapper.UserMapper">
+    <select id="login" resultType="com.s3.pojo.User">
+        select * from user where userName = #{name} and userPassword = #{pwd}
+    </select>
+    <insert id="register" parameterType="com.s3.pojo.User">
+        insert into user values
+        (null,#{userName},#{userNickName},#{userPassword}
+        ,#{userRealname},#{userGender},#{userBirthday},#{userAddress}
+        ,#{userHomePlace},#{userProfilePictureSrc})
+    </insert>
+</mapper>

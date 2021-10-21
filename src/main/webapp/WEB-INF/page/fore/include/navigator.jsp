@@ -19,7 +19,7 @@
             <c:choose>
                 <c:when test="${requestScope.user.userName==null}">
                     <em>嗨！欢迎来到Mall商城</em>
-                    <a href="${ctx}/login">登录</a>
+                    <a href="${ctx}/fore/toLogin">登录</a>
                     <a href="${ctx}/register">注册</a>
                 </c:when>
                 <c:otherwise>

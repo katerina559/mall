@@ -51,7 +51,7 @@
         </div>
         <div class="pwdLogin">
             <span class="loginTitle">密码登录</span>
-            <form method="post" class="loginForm">
+            <form action="/fore/login" method="post" class="loginForm">
                 <div class="loginInputDiv">
                     <label for="name" class="loginLabel"><img
                             src="${ctx}/res/images/fore/WebsiteImage/2018-04-27_235518.png"
@@ -69,7 +69,7 @@
             <div class="loginLinks">
                 <a href="#">忘记密码</a>
                 <a href="#">忘记会员名</a>
-                <a href="${ctx}/register">免费注册</a>
+                <a href="${ctx}/fore/toRegister">免费注册</a>
             </div>
             <div class="error_message">
                 <p id="error_message_p"></p>
@@ -90,7 +90,7 @@
             </div>
             <div class="loginLinks">
                 <a href="JavaScript:void(0)" id="pwdLogin">密码登录</a>
-                <a href="#">免费注册</a>
+                <a href="/fore/toRegister">免费注册</a>
             </div>
         </div>
     </div>

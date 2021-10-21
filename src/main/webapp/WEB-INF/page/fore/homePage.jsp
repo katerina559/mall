@@ -58,6 +58,7 @@
              <c:if test="${i.count == 1}">style="display: block;"</c:if> />
     </c:forEach>
 </div>
+<!-- 商品类型 -->
 <div class="banner_main">
     <ul class="banner_nav">
         <c:forEach items="${requestScope.categoryList}" var="category">

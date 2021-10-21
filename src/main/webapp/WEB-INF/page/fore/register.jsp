@@ -97,6 +97,7 @@
                 </c:forEach>
             </select>
             <select class="selectpicker" id="select_user_address_city" data-size="8" data-live-search="true">
+                <option value="110100">北京市</option>
                 <c:forEach items="${requestScope.cityList}" var="address" varStatus="i">
                     <option value="${address.addressAreaId}"
                             <c:if test="${requestScope.cityAddressId==address.addressAreaId}">selected</c:if>>${address.addressName}</option>
@@ -104,6 +105,7 @@
             </select>
             <select name="userAddress" class="selectpicker" id="select_user_address_district" data-size="8"
                     data-live-search="true">
+                <option value="110101">东城区</option>
                 <c:forEach items="${requestScope.districtList}" var="address" varStatus="i">
                     <option value="${address.addressAreaId}"
                             <c:if test="${requestScope.districtAddressId==address.addressAreaId}">selected</c:if>>${address.addressName}</option>
