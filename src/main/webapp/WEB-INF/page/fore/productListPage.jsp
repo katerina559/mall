@@ -18,7 +18,7 @@
                     src="${ctx}/res/images/fore/WebsiteImage/tmallLogoD.png"></a>
         </div>
         <div class="shopSearchHeader">
-            <form action="${ctx}/product" method="get">
+            <form action="${ctx}/productList/search" method="get">
                 <div class="shopSearchInput">
                     <input type="text" class="searchInput" name="productName" placeholder="搜索 商品/品牌/店铺"
                            value="${requestScope.searchValue}" maxlength="50">

@@ -6,4 +6,7 @@
     <select id="getList" resultType="com.s3.pojo.Category">
         select * from category
     </select>
+    <select id="getCategory" resultType="com.s3.pojo.Category">
+        select * from category where categoryId = #{pid}
+    </select>
 </mapper>

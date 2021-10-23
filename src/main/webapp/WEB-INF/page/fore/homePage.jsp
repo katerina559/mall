@@ -16,7 +16,7 @@
     <div class="header">
         <img src="${ctx}/res/images/fore/WebsiteImage/HomeLogoB.png">
         <div class="mallSearch">
-            <form action="${ctx}/product" method="get">
+            <form action="${ctx}/productList/search" method="get">
                 <div class="mallSearch-input">
                     <input class="header_search_input" type="text" name="productName" placeholder="搜索 商品/品牌/店铺"
                            maxlength="50">
@@ -90,16 +90,16 @@
                         <span></span>
                         <p>${category.categoryName}</p>
                     </div>
-                    <a href="${ctx}/product?categoryId=${category.categoryId}"><img
+                    <a href="${ctx}/productList/search?categoryId=${category.categoryId}"><img
                             class="banner_goods_show"
-                            src="res/images/fore/WebsiteImage/show/${category.categoryId}.jpg"></a>
+                            src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/show/${category.categoryId}.jpg"></a>
                     <div class="banner_goods_items">
                         <c:forEach items="${category.productList}" var="product" varStatus="i">
                             <c:if test="${i.index<8}">
                                 <div class="banner_goods_item">
                                     <a href="product/${product.productId}" class="goods_link"></a>
                                     <img src="${ctx}/res/images/item/productSinglePicture/${product.singleProductImageList[0].productImageSrc}">
-                                    <a href="product/${product.productId}"
+                                     0.3<a href="product/${product.productId}"
                                        class="goods_name">${product.productName}</a>
                                     <span class="goods_price">￥${product.productSalePrice}</span>
                                 </div>

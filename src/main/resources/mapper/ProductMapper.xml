@@ -31,4 +31,28 @@
         select count(*) from product
         <include refid="where"></include>
     </select>
+
+    <!-- 查询轮播图片 -->
+    <select id="getImg" resultType="com.s3.pojo.Product">
+        select * from product where productIsEnabled=2 limit 6
+    </select>
+    <select id="getProductByCid" resultType="com.s3.pojo.Product">
+        select * from product where productCategoryId=#{cid} and productIsEnabled in(0,2)
+        order by productId desc limit 8
+    </select>
+
+    <select id="getListByName" resultType="com.s3.pojo.Product">
+        select * from product
+        <where>
+            <if test="productName != null and productName != ''">
+                productName like concat('%',#{productName},'%')
+            </if>
+            <if test="cid != null and cid != -1">
+                and productCategoryId = #{cid}
+            </if>
+        </where>
+        and productIsEnabled in(0,2)
+        limit 0,20
+    </select>
+
 </mapper>

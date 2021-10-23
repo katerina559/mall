@@ -17,16 +17,16 @@
     <div class="nav_main">
         <p id="container_login">
             <c:choose>
-                <c:when test="${requestScope.user.userName==null}">
+                <c:when test="${user.userName==null}">
                     <em>嗨！欢迎来到Mall商城</em>
                     <a href="${ctx}/fore/toLogin">登录</a>
-                    <a href="${ctx}/register">注册</a>
+                    <a href="${ctx}/fore/toRegister">注册</a>
                 </c:when>
                 <c:otherwise>
                     <em>Hi，</em>
                     <a href="${ctx}/userDetails" class="userName"
-                       target="_blank">${requestScope.user.userName}</a>
-                    <a href="${ctx}/login/logout">退出</a>
+                       target="_blank">${user.userName}</a>
+                    <a href="${ctx}/user/loginOut">退出</a>
                 </c:otherwise>
             </c:choose>
         </p>

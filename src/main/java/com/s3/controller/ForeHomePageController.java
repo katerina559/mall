@@ -2,8 +2,12 @@ package com.s3.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.s3.pojo.Address;
+import com.s3.pojo.Category;
+import com.s3.pojo.Product;
 import com.s3.pojo.User;
 import com.s3.service.impl.AddressServiceImpl;
+import com.s3.service.impl.CategoryServiceImpl;
+import com.s3.service.impl.ProductServiceImpl;
 import com.s3.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,15 +23,28 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/fore")
-public class ForeController {
+public class ForeHomePageController {
 
     @Resource
     UserServiceImpl userService;
     @Resource
     AddressServiceImpl addressService;
+    @Resource
+    CategoryServiceImpl categoryService;
+    @Resource
+    ProductServiceImpl productService;
+
+    @RequestMapping("/test")
+    public String test(){
+        return "page/fore/productListPage";
+    }
 
     @RequestMapping("/toHome")
-    public String first(){
+    public String first(Model model){
+        List<Category> list = categoryService.getList();
+        List<Product> img = productService.getImg();
+        model.addAttribute("specialProductList",img);
+        model.addAttribute("categoryList",list);
         return "/page/fore/homePage";
     }
 
@@ -91,6 +108,30 @@ public class ForeController {
             map.put("success",false);
         }
         return JSON.toJSONString(map);
+    }
+
+    @RequestMapping("/nav")
+    @ResponseBody
+    public String nav(@RequestParam("cid") Integer cid){
+        List<Category> list = categoryService.getList();
+        Map<String,Object> map = new HashMap<>();
+        Category c = new Category();
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getCategoryId() == cid){
+                list.get(i).setProductList(productService.getProductByCid(cid));
+                c = list.get(i);
+            }
+        }
+        map.put("success",true);
+        map.put("category",c);
+        return JSON.toJSONString(map);
+    }
+
+    @RequestMapping("/showHomePage")
+    public String showHomePage(Model model){
+        List<Category> list = categoryService.getList();
+        model.addAttribute("categoryList",list);
+        return "redirect:/fore/toHome";
     }
 
 }

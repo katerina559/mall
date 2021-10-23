@@ -17,27 +17,25 @@ $(function () {
         }
         $(this).attr("data-status", "ajaxShow");
         $.ajax({
-            type: "GET",
-            url: contextPath+"/product/nav/" + $(this).attr("data-toggle"),
+            type: "get",
+            url: contextPath+"/fore/nav?cid=" + $(this).attr("data-toggle"),
             data: null,
             dataType: "json",
             success: function (data) {
                 if (data.success) {
-                    var list = data.category.complexProductList;
+                    var list = data.category.productList;
                     for (var i = 0; i < list.length; i++) {
-                        if (list[i].length === 0) {
+                        if (list.length == 0) {
                             continue;
                         }
                         div.append("<div class='hot_word'></div>");
                         var hot_word_div = div.children(".hot_word").last();
-                        for (var j = 0; j < list[i].length; j++) {
-                            var productTitle = list[i][j].productTitle;
+                            var productTitle = list[i].productTitle;
                             var index = productTitle.indexOf(' ');
                             if (index !== -1) {
                                 productTitle = productTitle.substring(0, index);
                             }
-                            hot_word_div.append("<a href='product/" + list[i][j].productId + "'>" + productTitle + "</a>");
-                        }
+                            hot_word_div.append("<a href='product/" + list[i].productId + "'>" + productTitle + "</a>");
                     }
                     //热词样式
                     div.find("a").each(function () {

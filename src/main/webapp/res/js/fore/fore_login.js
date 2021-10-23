@@ -51,7 +51,7 @@ $(function () {
                 success: function (data) {
                     $(".loginButton").val("登 录");
                     if (data == "ok") {
-                        location.href = contextPath+"/fore/toHome";
+                        location.href = contextPath+"/fore/showHomePage";
                     } else {
                         styleUtil.errorShow($("#error_message_p"), "用户名和密码错误！");
                     }
