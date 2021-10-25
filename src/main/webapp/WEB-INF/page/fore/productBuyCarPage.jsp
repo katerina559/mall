@@ -12,22 +12,22 @@
         $(function () {
             $('#btn-ok').click(function () {
                 $.ajax({
-                    url: "${ctx}/orderItem/" + $("#order_id_hidden").val(),
-                    type: "DELETE",
+                    url: "${ctx}/car/removeOrder/" + $("#order_id_hidden").val(),
+                    type: "get",
                     data: null,
                     dataType: "json",
                     success: function (data) {
                         if (data.success !== true) {
                             alert("购物车商品删除异常，请稍候再试！");
                         }
-                        location.href = "/mall/cart";
+                        location.href = "${ctx}/car/toCar/";
                     },
                     beforeSend: function () {
 
                     },
                     error: function () {
                         alert("购物车产品删除异常，请稍后再试！");
-                        location.href = "/mall/cart";
+                        location.href = "${ctx}/car/toCar/";
                     }
                 });
             });
@@ -62,7 +62,7 @@
             <ul>
                 <c:forEach items="${requestScope.categoryList}" var="category" varStatus="i">
                     <li>
-                        <a href="${ctx}/product?categoryId=${category.categoryId}">${category.categoryName}</a>
+                        <a href="${ctx}/productList/search?categoryId=${category.categoryId}">${category.categoryName}</a>
                     </li>
                 </c:forEach>
             </ul>
@@ -119,7 +119,7 @@
                 <tbody>
                 <c:forEach items="${requestScope.orderItemList}" var="orderItem">
                     <tr class="orderItem_category">
-                        <td colspan="6"><span ></span><span
+                        <td colspan="6"><span></span><span
                                 class="category_shop">店铺：贤趣${orderItem.productOrderItemProduct.productCategory.categoryName}旗舰店</span>
                         </td>
                     </tr>
@@ -131,7 +131,7 @@
                         <td><img class="orderItem_product_image"
                                  src="${ctx}/res/images/item/productSinglePicture/${orderItem.productOrderItemProduct.singleProductImageList[0].productImageSrc}"
                                  style="width: 80px;height: 80px;"/><span class="orderItem_product_name"><a
-                                href="${ctx}/product/${orderItem.productOrderItemProduct.productId}">${orderItem.productOrderItemProduct.productName}</a></span>
+                                href="${ctx}/detail/productDetail/${orderItem.productOrderItemProduct.productId}">${orderItem.productOrderItemProduct.productName}</a></span>
                         </td>
                         <td><span
                                 class="orderItem_product_price">￥${orderItem.productorderitemPrice/orderItem.productorderitemNumber}</span>

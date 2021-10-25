@@ -17,5 +17,7 @@ public interface ProductOrderItemMapper {
     int updateOrderNumber(@Param("pid") Integer pid,@Param("uid") Integer uid);
     // 查询登录用户的购物车集合
     List<ProductOrderItem> getBuyCarInUser(@Param("uid") Integer uid);
+    // 根据订单id删除购物车订单
+    int removeOrder(@Param("oid") Integer oid);
 
 }

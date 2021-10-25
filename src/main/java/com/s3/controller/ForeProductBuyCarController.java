@@ -44,30 +44,18 @@ public class ForeProductBuyCarController {
         // 根据登录用户的id获取购物车集合
         List<ProductOrderItem> userList = productOrderItemService.getBuyCarInUser(userId);
         // 遍历购物车集合
+        Map<String,Object> map = new HashMap<>();
         int count = 0;
         if(userList.size() > 0){
             for (ProductOrderItem item : userList) {
                 // 如果该用户购物车有该商品 则修改商品数量 否则添加商品
                 if(item.getProductorderitemProductId() == pid){
                     count = productOrderItemService.updateOrderNumber(pid, userId);
-                }else{
-                    count = addCar(pid,number,userId);
+                    map.put("success",true);
+                    return JSON.toJSONString(map);
                 }
             }
-        }else{
-            count = addCar(pid,number,userId);
         }
-        Map<String,Object> map = new HashMap<>();
-        if(count > 0){
-            map.put("success",true);
-        }else{
-            map.put("success",false);
-        }
-        return JSON.toJSONString(map);
-    }
-
-    // 添加购物车方法
-    public Integer addCar(Integer pid,Integer number,Integer userId){
         ProductOrderItem productOrderItem = new ProductOrderItem();
         // 先根据商品id获取商品信息
         Product product = productService.getDetailById(pid);
@@ -81,10 +69,16 @@ public class ForeProductBuyCarController {
         productOrderItem.setProductorderitemProductId(pid);     // 商品id
         productOrderItem.setProductorderitemUserId(userId);
         // 新增订单
-        int count = productOrderItemService.addBuyCar(productOrderItem);
-        return count;
+        count = productOrderItemService.addBuyCar(productOrderItem);
+        if(count > 0){
+            map.put("success",true);
+        }else{
+            map.put("success",false);
+        }
+        return JSON.toJSONString(map);
     }
 
+    // 进入购物车
     @RequestMapping("/toCar")
     public String toCar(Model model,HttpSession session){
         // 先获取用户对象
@@ -119,6 +113,19 @@ public class ForeProductBuyCarController {
         model.addAttribute("orderItemList",orderItemList);
         model.addAttribute("categoryList",category);
         return "page/fore/productBuyCarPage";
+    }
+
+    @RequestMapping("/removeOrder/{oid}")
+    @ResponseBody
+    public String removeOrder(@PathVariable("oid") Integer oid){
+        int count = productOrderItemService.removeOrder(oid);
+        Map<String,Object> map = new HashMap<>();
+        if(count > 0){
+            map.put("success",true);
+        }else{
+            map.put("success",false);
+        }
+        return JSON.toJSONString(map);
     }
 
 }

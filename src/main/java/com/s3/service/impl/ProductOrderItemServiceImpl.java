@@ -33,4 +33,9 @@ public class ProductOrderItemServiceImpl implements ProductOrderItemService {
     public List<ProductOrderItem> getBuyCarInUser(Integer uid) {
         return productOrderItemMapper.getBuyCarInUser(uid);
     }
+
+    @Override
+    public int removeOrder(Integer oid) {
+        return productOrderItemMapper.removeOrder(oid);
+    }
 }

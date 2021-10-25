@@ -15,5 +15,7 @@ public interface ProductOrderItemService {
     int updateOrderNumber(Integer pid,Integer uid);
     // 查询登录用户的购物车集合
     List<ProductOrderItem> getBuyCarInUser(Integer uid);
+    // 根据订单id删除购物车订单
+    int removeOrder(Integer oid);
     
 }

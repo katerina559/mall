@@ -143,7 +143,7 @@ function create(obj) {
     });
     $.ajax({
         url: contextPath + "/orderItem",
-        type: "PUT",
+        type: "get",
         data: {
             "orderItemMap": JSON.stringify(orderItemMap)
         },

@@ -14,8 +14,8 @@
         #{productorderitemUserId},#{productorderitemUserMessage})
     </insert>
     <update id="updateOrderNumber" parameterType="int">
-        update productorderitem set productorderitemNumber = productorderitemNumber + 1,
-        productorderitemPrice = #{price}
+        update productorderitem set productorderitemPrice = (productorderitemPrice/productorderitemNumber)*(productorderitemNumber+1),
+        productorderitemNumber = productorderitemNumber + 1
         where productorderitemProductId = #{pid}
         and productorderitemuserId = #{uid}
         and productorderitemOrderId is null
@@ -25,4 +25,7 @@
         where productorderitemOrderId is null
         and productorderitemuserId = #{uid}
     </select>
+    <delete id="removeOrder" parameterType="int">
+        delete from productorderitem where productorderitemid = #{oid}
+    </delete>
 </mapper>
