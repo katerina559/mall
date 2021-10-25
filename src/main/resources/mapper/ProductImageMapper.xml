@@ -5,12 +5,17 @@
 <mapper namespace="com.s3.mapper.ProductImageMapper">
 
     <select id="getImgSrc" resultType="com.s3.pojo.ProductImage">
-        select * from productimage where productimageProductId = #{pid}
+        select * from productimage
+        where productimageProductId = #{pid} and productimageType=0
     </select>
     <select id="getHomePageImg" resultType="com.s3.pojo.ProductImage">
         select * from productimage
         where productimageProductId = #{pid} and productimageType=0
         limit 1
+    </select>
+    <select id="getDetailImgSrc" resultType="com.s3.pojo.ProductImage">
+        select * from productimage
+        where productimageProductId = #{pid}
     </select>
 
 </mapper>

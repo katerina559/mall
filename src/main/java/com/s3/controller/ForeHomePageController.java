@@ -36,7 +36,7 @@ public class ForeHomePageController {
 
     @RequestMapping("/test")
     public String test(){
-        return "page/fore/productListPage";
+        return "page/fore/productBuyCarPage";
     }
 
     @RequestMapping("/toHome")

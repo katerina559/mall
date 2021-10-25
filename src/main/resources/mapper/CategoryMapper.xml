@@ -9,4 +9,7 @@
     <select id="getCategory" resultType="com.s3.pojo.Category">
         select * from category where categoryId = #{pid}
     </select>
+    <select id="get5Category" resultType="com.s3.pojo.Category">
+        select * from category limit 5
+    </select>
 </mapper>

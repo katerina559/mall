@@ -23,4 +23,9 @@ public class UserServiceImpl implements UserService {
         return userMapper.register(user);
     }
 
+    @Override
+    public User getUser(Integer uid) {
+        return userMapper.getUser(uid);
+    }
+
 }

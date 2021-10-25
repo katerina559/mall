@@ -26,7 +26,7 @@
             <ul>
                 <c:forEach items="${requestScope.categoryList}" var="category" varStatus="i">
                     <c:if test="${i.index<9}">
-                        <li><a href="${ctx}/product?categoryId=${category.categoryId}"
+                        <li><a href="${ctx}/productList/search?categoryId=${category.categoryId}"
                                 <c:if
                                 test="${i.index % 2 != 0}"> style="color: #FF0036"</c:if>>${fn:substring(category.categoryName,0,fn:indexOf(category.categoryName,' /'))}</a>
                         </li>
@@ -97,9 +97,9 @@
                         <c:forEach items="${category.productList}" var="product" varStatus="i">
                             <c:if test="${i.index<8}">
                                 <div class="banner_goods_item">
-                                    <a href="product/${product.productId}" class="goods_link"></a>
+                                    <a href="/detail/productDetail/${product.productId}" class="goods_link"></a>
                                     <img src="${ctx}/res/images/item/productSinglePicture/${product.singleProductImageList[0].productImageSrc}">
-                                     0.3<a href="product/${product.productId}"
+                                    <a href="product/${product.productId}"
                                        class="goods_name">${product.productName}</a>
                                     <span class="goods_price">￥${product.productSalePrice}</span>
                                 </div>

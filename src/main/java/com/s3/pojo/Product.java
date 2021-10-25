@@ -22,4 +22,5 @@ public class Product implements Serializable {
     private List<ProductImage> singleProductImageList;  // 商品预览图地址
     private Integer productSaleCount;       // 商品的成交量
     private Integer productReviewCount;     // 商品的评论数
+    private List<Review> reviewList;        // 商品的评论集合
 }

@@ -7,4 +7,22 @@
         select count(productorderitemNumber) from productorderitem
         where productorderitemProductId = #{pid}
     </select>
+    <insert id="addBuyCar" parameterType="com.s3.pojo.ProductOrderItem">
+        insert into productorderitem
+        values (#{productorderitemId},#{productorderitemNumber},
+        #{productorderitemPrice},#{productorderitemProductId},#{productorderitemOrderId},
+        #{productorderitemUserId},#{productorderitemUserMessage})
+    </insert>
+    <update id="updateOrderNumber" parameterType="int">
+        update productorderitem set productorderitemNumber = productorderitemNumber + 1,
+        productorderitemPrice = #{price}
+        where productorderitemProductId = #{pid}
+        and productorderitemuserId = #{uid}
+        and productorderitemOrderId is null
+    </update>
+    <select id="getBuyCarInUser" resultType="com.s3.pojo.ProductOrderItem">
+        select * from productorderitem
+        where productorderitemOrderId is null
+        and productorderitemuserId = #{uid}
+    </select>
 </mapper>

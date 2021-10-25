@@ -1,6 +1,7 @@
 package com.s3.service;
 
 import com.s3.pojo.Product;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -19,5 +20,7 @@ public interface ProductService {
     List<Product> getProductByCid(Integer cid);
     // 根据商品名称查询商品信息
     List<Product> getListByName(String productName,Integer cid);
+    // 根据商品id获取商品信息
+    Product getDetailById(Integer pid);
 
 }

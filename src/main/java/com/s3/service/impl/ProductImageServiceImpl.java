@@ -23,4 +23,9 @@ public class ProductImageServiceImpl implements ProductImageService {
     public List<ProductImage> getHomePageImg(Integer pid) {
         return productImageMapper.getHomePageImg(pid);
     }
+
+    @Override
+    public List<ProductImage> getDetailImgSrc(Integer pid) {
+        return productImageMapper.getDetailImgSrc(pid);
+    }
 }

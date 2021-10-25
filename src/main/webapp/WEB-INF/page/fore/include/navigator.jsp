@@ -42,7 +42,7 @@
             </li>
             <li class="quick_li_cart">
                 <img src="${ctx}/res/images/fore/WebsiteImage/buyCar.png">
-                <a href="${ctx}/cart">购物车</a>
+                <a href="${ctx}/car/toCar">购物车</a>
             </li>
             <li class="quick_li_menuItem">
                 <div class="sn_menu">

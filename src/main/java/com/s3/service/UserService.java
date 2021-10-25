@@ -9,5 +9,7 @@ public interface UserService {
     User login(String name,String pwd);
     // 注册
     int register(User user);
+    // 根据用户id查询用户
+    User getUser(Integer uid);
 
 }

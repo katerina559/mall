@@ -52,7 +52,7 @@
                     class="span_tmallBuyCar">购物车</span></a>
         </div>
         <div class="shopSearchHeader">
-            <form action="${ctx}/product" method="get">
+            <form action="${ctx}/productList/search" method="get">
                 <div class="shopSearchInput">
                     <input type="text" class="searchInput" name="productName" placeholder="搜索 商品/品牌/店铺"
                            value="${requestScope.searchValue}" maxlength="50">
@@ -125,32 +125,32 @@
                     </tr>
                     <tr class="orderItem_info">
                         <td class="tbody_checkbox"><input type="checkbox" class="cbx_select"
-                                                          id="cbx_orderItem_select_${orderItem.productOrderItemId}"
+                                                          id="cbx_orderItem_select_${orderItem.productorderitemId}"
                                                           name="orderItem_id"><label
-                                for="cbx_orderItem_select_${orderItem.productOrderItemId}"></label></td>
+                                for="cbx_orderItem_select_${orderItem.productorderitemId}"></label></td>
                         <td><img class="orderItem_product_image"
                                  src="${ctx}/res/images/item/productSinglePicture/${orderItem.productOrderItemProduct.singleProductImageList[0].productImageSrc}"
                                  style="width: 80px;height: 80px;"/><span class="orderItem_product_name"><a
                                 href="${ctx}/product/${orderItem.productOrderItemProduct.productId}">${orderItem.productOrderItemProduct.productName}</a></span>
                         </td>
                         <td><span
-                                class="orderItem_product_price">￥${orderItem.productOrderItemPrice/orderItem.productOrderItemNumber}</span>
+                                class="orderItem_product_price">￥${orderItem.productorderitemPrice/orderItem.productorderitemNumber}</span>
                         </td>
                         <td>
                             <div class="item_amount">
                                 <a href="javascript:void(0)" onclick="up(this)"
-                                   class="J_Minus <c:if test="${orderItem.productOrderItemNumber<=1}">no_minus</c:if>">-</a>
-                                <input type="text" value="${orderItem.productOrderItemNumber}"/>
+                                   class="J_Minus <c:if test="${orderItem.productorderitemNumber<=1}">no_minus</c:if>">-</a>
+                                <input type="text" value="${orderItem.productorderitemNumber}"/>
                                 <a href="javascript:void(0)" onclick="down(this)" class="J_Plus">+</a>
                             </div>
                         </td>
                         <td>
-                            <span class="orderItem_product_realPrice">￥${orderItem.productOrderItemPrice}</span>
+                            <span class="orderItem_product_realPrice">￥${orderItem.productorderitemPrice}</span>
                         </td>
-                        <td><a href="javascript:void(0)" onclick="removeItem('${orderItem.productOrderItemId}')"
+                        <td><a href="javascript:void(0)" onclick="removeItem('${orderItem.productorderitemId}')"
                                class="remove_order">删除</a></td>
                         <td>
-                            <input type="hidden" class="input_orderItem" name="${orderItem.productOrderItemId}"/>
+                            <input type="hidden" class="input_orderItem" name="${orderItem.productorderitemId}"/>
                         </td>
                     </tr>
                 </c:forEach>

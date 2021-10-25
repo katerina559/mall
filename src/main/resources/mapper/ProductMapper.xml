@@ -54,5 +54,8 @@
         and productIsEnabled in(0,2)
         limit 0,20
     </select>
+    <select id="getDetailById" resultType="com.s3.pojo.Product">
+        select * from product where productId = #{pid}
+    </select>
 
 </mapper>

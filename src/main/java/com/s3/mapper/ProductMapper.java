@@ -33,5 +33,7 @@ public interface ProductMapper {
     // 根据商品名称和商品类型id查询商品信息
     List<Product> getListByName(@Param("productName") String productName,
                                 @Param("cid") Integer cid);
+    // 根据商品id获取商品信息
+    Product getDetailById(@Param("pid") Integer pid);
 
 }

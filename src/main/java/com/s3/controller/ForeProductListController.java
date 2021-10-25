@@ -1,6 +1,7 @@
 package com.s3.controller;
 
 import com.s3.pojo.Product;
+import com.s3.service.impl.CategoryServiceImpl;
 import com.s3.service.impl.ProductServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +17,16 @@ public class ForeProductListController {
 
     @Resource
     ProductServiceImpl productService;
+    @Resource
+    CategoryServiceImpl categoryService;
 
     @RequestMapping("/search")
     public String search(@RequestParam(value = "productName",required = false) String productName,
                          @RequestParam(value = "categoryId",required = false) Integer categoryId,
                          Model model){
         List<Product> productList = productService.getListByName(productName,categoryId);
+        model.addAttribute("searchValue",productName);
+        model.addAttribute("categoryList",categoryService.get5Category());
         model.addAttribute("productList",productList);
         return "page/fore/productListPage";
     }

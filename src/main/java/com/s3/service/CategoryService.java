@@ -12,4 +12,6 @@ public interface CategoryService {
     List<Category> getList();
     // 根据商品外键查询类型信息
     Category getCategory(Integer pid);
+    // 获取前五条商品类型信息
+    List<Category> get5Category();
 }

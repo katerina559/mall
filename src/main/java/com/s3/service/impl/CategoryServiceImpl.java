@@ -49,4 +49,9 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.getCategory(pid);
     }
 
+    @Override
+    public List<Category> get5Category() {
+        return categoryMapper.get5Category();
+    }
+
 }

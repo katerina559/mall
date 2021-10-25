@@ -21,7 +21,7 @@
         <img src="${ctx}/res/images/fore/WebsiteImage/detailsHeaderA.png"
              class="shopAssessHeader">
         <div class="shopSearchHeader">
-            <form action="${ctx}/product" method="get">
+            <form action="${ctx}/productList/search" method="get">
                 <div class="shopSearchInput">
                     <input type="text" class="searchInput" name="productName" placeholder="搜索 商品/品牌/店铺"
                            maxlength="50">
@@ -32,7 +32,7 @@
             <ul>
                 <c:forEach items="${requestScope.categoryList}" var="category" varStatus="i">
                     <li>
-                        <a href="${ctx}/product?categoryId=${category.categoryId}">${category.categoryName}</a>
+                        <a href="${ctx}/productList/search?categoryId=${category.categoryId}">${category.categoryName}</a>
                     </li>
                 </c:forEach>
             </ul>
@@ -183,7 +183,7 @@
                     });
                     //点击加入购物车按钮时
                     $(".context_buyCar_form").submit(function () {
-                        if ('${sessionScope.userId}' === "") {
+                        if ('${sessionScope.user.userId}' === "") {
                             $(".loginModel").show();
                             $(".loginDiv").show();
                             return false;
@@ -193,9 +193,9 @@
                             location.reload();
                         } else {
                             $.ajax({
-                                url: "${ctx}/orderItem/create/${requestScope.product.productId}?product_number=" + $.trim($(".context_buymember").val()),
+                                url: "${ctx}/car/toBuyCar/${requestScope.product.productId}?number=" + $.trim($(".context_buymember").val()),
                                 type: "POST",
-                                data: {"product_number": number},
+                                data: {"number": number},
                                 dataType: "json",
                                 success: function (data) {
                                     if (data.success) {
@@ -226,10 +226,10 @@
                     });
                 });
             </script>
-            <form method="get" class="context_buy_form">
+            <form method="get" class="context_buy_form" style="display: inline-block" >
                 <input class="context_buyNow" type="submit" value="立即购买"/>
             </form>
-            <form method="get" class="context_buyCar_form">
+            <form method="get" class="context_buyCar_form" style="display: inline-block" >
                 <input class="context_addBuyCar" type="submit" value="加入购物车"/>
             </form>
         </div>

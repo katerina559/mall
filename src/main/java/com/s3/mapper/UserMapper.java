@@ -12,5 +12,7 @@ public interface UserMapper {
                @Param("pwd") String pwd);
     // 注册
     int register(User user);
+    // 根据用户id查询用户
+    User getUser(@Param("uid") Integer uid);
 
 }

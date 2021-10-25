@@ -107,7 +107,7 @@ $(function () {
         if (yn) {
             $.ajax({
                 type: "POST",
-                url: contextPath+"/login/doLogin",
+                url: contextPath+"/user/ajaxLogin",
                 data: {"username": $.trim($("#name").val()), "password": $.trim($("#password").val())},
                 dataType: "json",
                 success: function (data) {

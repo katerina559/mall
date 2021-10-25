@@ -12,4 +12,7 @@
         ,#{userRealname},#{userGender},#{userBirthday},#{userAddress}
         ,#{userHomePlace},#{userProfilePictureSrc})
     </insert>
+    <select id="getUser" resultType="com.s3.pojo.User">
+        select * from user where userid = #{uid}
+    </select>
 </mapper>
